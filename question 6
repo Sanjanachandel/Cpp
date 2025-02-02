@@ -1,0 +1,30 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// Recursive function to check if a number is palindrome
+bool isPalindromeHelper(const string &num, int start, int end) {
+    if (start >= end) return true;
+    if (num[start] != num[end]) return false;
+    return isPalindromeHelper(num, start + 1, end - 1);
+}
+
+bool isPalindrome(int n) {
+    string num = to_string(n);
+    return isPalindromeHelper(num, 0, num.length() - 1);
+}
+
+int main() {
+    int num;
+    cout << "Enter a natural number: ";
+    cin >> num;
+    
+    if (num < 0) {
+        cout << "Please enter a natural number." << endl;
+    } else {
+        cout << (isPalindrome(num) ? "true" : "false") << endl;
+    }
+    
+    return 0;
+}
